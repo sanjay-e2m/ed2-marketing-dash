@@ -187,7 +187,8 @@ async function saveAllTasks() {
         return {
             id: t.id,
             task: taskName,
-            owner: owner
+            owner: owner,
+            descriptions: t.descriptions || ""
         };
     });
 
@@ -272,7 +273,8 @@ function addTask() {
     tasks.push({
         id: Date.now(),
         task: newTask,
-        owner: newOwner
+        owner: newOwner,
+        descriptions: ""
     });
 
     // Reset form and close modal
