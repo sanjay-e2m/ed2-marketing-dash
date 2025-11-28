@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ed2 Market Account Intel">
+    <title>Client Task Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <!-- Left Side: Video Section -->
+        <div class="video-section">
+            <video autoplay loop muted playsinline>
+                <source src="assets/free-pay-per-click-digital-marketing-animation-gif-download-6622728.mp4"
+                    type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <!-- Right Side: Form/Content Section -->
+        <div class="form-section">
+            <div class="container">
+                <div class="banner">
+                    <img src="assets/banner.png" class="banner-img" alt="Banner">
+                </div>
+
+                <header class="profile-header">
+                    <div class="profile-pic"><img src="assets/user.png" class="img-test" alt="User Profile"></div>
+                    <div class="profile-info">
+                        <h1>Ed2 Market Account Intel</h1>
+                        <p>Client Task Dashboard</p>
+                    </div>
+                </header>
+
+                <!-- Meeting Title Display -->
+                <div class="meeting-title-container" id="meetingTitleContainer" style="display: none;">
+                    <h2 class="meeting-title" id="meetingTitleDisplay"></h2>
+                </div>
+
+                <div class="content-card">
+                    <div class="section-title">
+                        <span>Task Overview</span>
+                        <div class="meeting-type-selector">
+                            <label for="globalMeetingType">Meeting Type:</label>
+                            <select id="globalMeetingType" class="global-select">
+                                <option value="Internal">Internal</option>
+                                <option value="External">External</option>
+                                <option value="Updates">Updates</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="taskList" class="task-list-container"></div>
+                    <div class="save-all-btn-container">
+                        <button class="btn-primary" onclick="saveAllTasks()">Save All Changes</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floating Action Button (Fixed Position) -->
+            <button class="add-fab" onclick="openModal()">+</button>
+        </div>
+    </div>
+
+    <!-- Modal for Adding New Task -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3>Add New Task</h3>
+            <form id="taskForm" onsubmit="event.preventDefault(); addTask();">
+                <div class="task-item">
+                    <label for="newTask">Task Name *</label>
+                    <input type="text" id="newTask" placeholder="Enter task name" required>
+                </div>
+                <div class="task-item">
+                    <label for="newOwner">Assigned To *</label>
+                    <input type="text" id="newOwner" placeholder="Enter owner name" required>
+                </div>
+                <button class="btn-primary" type="submit">Add Task</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Loader Overlay -->
+    <div id="loaderOverlay" class="loader-overlay">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
