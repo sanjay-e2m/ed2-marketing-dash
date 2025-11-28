@@ -1,12 +1,12 @@
 /**
- * Renmar Account Intel - Main Script
+ * Ed2-Marketing - Main Script
  * Handles task management, rendering, and API interactions.
  */
 
 'use strict';
 
 // Constants
-const API_ENDPOINT = 'https://n8n.sitepreviews.dev/webhook/v1/client-tasks';
+const API_ENDPOINT = 'https://n8n.sitepreviews.dev/webhook/v1/ed2-market-client-tasks';
 const TOAST_DURATION = 3000;
 
 // Global variable to store meeting title
@@ -54,7 +54,7 @@ function displayMeetingTitle() {
     if (meetingTitle) {
         const container = document.getElementById('meetingTitleContainer');
         const titleElement = document.getElementById('meetingTitleDisplay');
-        
+
         if (container && titleElement) {
             titleElement.textContent = meetingTitle;
             container.style.display = 'block';
@@ -88,21 +88,21 @@ function loadTasksFromURL() {
     try {
         const decoded = decodeURIComponent(encodedData);
         const parsed = JSON.parse(decoded);
-        
+
         // Extract meeting title if present
         if (parsed.meeting_title) {
             meetingTitle = parsed.meeting_title;
         }
-        
+
         // Extract tasks array
         const tasksArray = parsed.tasks || parsed;
-        
+
         tasks = tasksArray.map((item, index) => ({
             id: Date.now() + index,
             task: item.task || "",
             owner: item.owner || ""
         }));
-        
+
         // Display meeting title if available
         displayMeetingTitle();
     } catch (err) {
@@ -121,51 +121,51 @@ function renderTasks() {
         // Create task row element
         const taskRow = document.createElement('div');
         taskRow.className = 'task-item-row';
-        
+
         // Create delete button
         const deleteBtn = document.createElement('button');
         deleteBtn.className = 'delete-task-btn';
         deleteBtn.title = 'Delete Task';
         deleteBtn.textContent = '🗑️';
         deleteBtn.addEventListener('click', () => deleteTask(t.id));
-        
+
         // Create task name field
         const taskNameField = document.createElement('div');
         taskNameField.className = 'task-item-field';
-        
+
         const taskNameLabel = document.createElement('label');
         taskNameLabel.textContent = `Task ${index + 1}`;
-        
+
         const taskNameInput = document.createElement('input');
         taskNameInput.type = 'text';
         taskNameInput.id = `task-name-${t.id}`;
         taskNameInput.value = t.task;
         taskNameInput.placeholder = 'Task Name';
-        
+
         taskNameField.appendChild(taskNameLabel);
         taskNameField.appendChild(taskNameInput);
-        
+
         // Create owner field
         const ownerField = document.createElement('div');
         ownerField.className = 'task-item-field';
-        
+
         const ownerLabel = document.createElement('label');
         ownerLabel.textContent = 'Assigned To';
-        
+
         const ownerInput = document.createElement('input');
         ownerInput.type = 'text';
         ownerInput.id = `owner-${t.id}`;
         ownerInput.value = t.owner;
         ownerInput.placeholder = 'Owner';
-        
+
         ownerField.appendChild(ownerLabel);
         ownerField.appendChild(ownerInput);
-        
+
         // Assemble the row
         taskRow.appendChild(deleteBtn);
         taskRow.appendChild(taskNameField);
         taskRow.appendChild(ownerField);
-        
+
         container.appendChild(taskRow);
     });
 }
@@ -245,7 +245,7 @@ function openModal() {
 
 function closeModal() {
     document.getElementById("modal").style.display = "none";
-    
+
     // Reset the form
     const taskForm = document.getElementById("taskForm");
     if (taskForm) {
@@ -300,7 +300,7 @@ function deleteTask(taskId) {
 }
 
 // Event Listeners
-window.addEventListener('click', function(event) {
+window.addEventListener('click', function (event) {
     if (event.target.id === "modal") closeModal();
 });
 
