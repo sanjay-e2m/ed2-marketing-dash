@@ -100,7 +100,8 @@ function loadTasksFromURL() {
         tasks = tasksArray.map((item, index) => ({
             id: Date.now() + index,
             task: item.task || "",
-            owner: item.owner || ""
+            owner: item.owner || "",
+            descriptions: item.descriptions || ""
         }));
 
         // Display meeting title if available
