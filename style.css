@@ -34,23 +34,6 @@ body {
     width: 100vw;
 }
 
-/* Video Section - Now on LEFT */
-.video-section {
-    flex: 1;
-    background-color: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    position: relative;
-}
-
-.video-section video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
 /* Form Section - Now on RIGHT */
 .form-section {
     flex: 1;
@@ -577,10 +560,6 @@ body {
         flex-direction: column;
         height: auto;
         overflow: auto;
-    }
-
-    .video-section {
-        display: none;
     }
 
     .form-section {
